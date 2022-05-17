@@ -33,8 +33,10 @@ let points = [...positions]
 console.log(points)
 
 image.addEventListener("mousemove", (event) => {
+
+    console.time("one mousemove: ")
     
-    // array min implementation
+    // array min implementation 0.6-1.2ms per image
     // const distances = []
     
     // for (let i = 0; i < points.length; i++) {
@@ -43,10 +45,9 @@ image.addEventListener("mousemove", (event) => {
     // }
 
     // let smallest = distances.indexOf(Math.min(...distances))
-    // if (smallest === 0) smallest = 1
-    //image.src = `img/${smallest}.jpg`
+    // image.src = `img/${smallest}.jpg`
 
-    // only remember last smallest implementation
+    // only remember last smallest implementation. timed as 0.22ms per image
     let smallestDist = Number.POSITIVE_INFINITY
     let smallest = [1]
 
@@ -58,7 +59,7 @@ image.addEventListener("mousemove", (event) => {
             smallest = points[i]
         }
     }
-    if (smallest[0] === 0) { smallest = [300] }
 
     image.src = `img/${smallest[0]}.jpg`
+    console.timeEnd("one mousemove: ")
 })
