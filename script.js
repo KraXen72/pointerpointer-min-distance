@@ -34,7 +34,7 @@ console.log(points)
 
 image.addEventListener("mousemove", (event) => {
 
-    console.time("one mousemove: ")
+    //console.time("one mousemove: ")
     
     // array min implementation 0.6-1.2ms per image
     // const distances = []
@@ -48,11 +48,11 @@ image.addEventListener("mousemove", (event) => {
     // image.src = `img/${smallest}.jpg`
 
     // only remember last smallest implementation. timed as 0.22ms per image
-    let smallestDist = Number.POSITIVE_INFINITY
-    let smallest = [1]
+    let smallestDist = Number.POSITIVE_INFINITY // the smallest distance i've seen so far
+    let smallest = [1] //where i store the smallest point arr
 
     for (let i = 0; i < points.length; i++) {
-        const point = points[i];
+        const point = points[i]; //point je [0] = index (img name), [1] is x, [2] is y
         const dist = precisionRound(distanceOfTwoPoints(point[1], point[2], event.clientX, event.clientY))
         if (dist < smallestDist) {
             smallestDist = dist
@@ -61,5 +61,5 @@ image.addEventListener("mousemove", (event) => {
     }
 
     image.src = `img/${smallest[0]}.jpg`
-    console.timeEnd("one mousemove: ")
+    //console.timeEnd("one mousemove: ")
 })
