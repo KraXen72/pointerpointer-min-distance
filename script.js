@@ -34,16 +34,31 @@ console.log(points)
 
 image.addEventListener("mousemove", (event) => {
     
-
-    const distances = []
+    // array min implementation
+    // const distances = []
     
+    // for (let i = 0; i < points.length; i++) {
+    //     const point = points[i];
+    //     distances.push(precisionRound(distanceOfTwoPoints(point[1], point[2], event.clientX, event.clientY)))
+    // }
+
+    // let smallest = distances.indexOf(Math.min(...distances))
+    // if (smallest === 0) smallest = 1
+    //image.src = `img/${smallest}.jpg`
+
+    // only remember last smallest implementation
+    let smallestDist = Number.POSITIVE_INFINITY
+    let smallest = [1]
+
     for (let i = 0; i < points.length; i++) {
         const point = points[i];
-        distances.push(precisionRound(distanceOfTwoPoints(point[1], point[2], event.clientX, event.clientY)))
+        const dist = precisionRound(distanceOfTwoPoints(point[1], point[2], event.clientX, event.clientY))
+        if (dist < smallestDist) {
+            smallestDist = dist
+            smallest = points[i]
+        }
     }
+    if (smallest[0] === 0) { smallest = [300] }
 
-    let smallest = distances.indexOf(Math.min(...distances))
-    if (smallest === 0) smallest = 1
-
-    image.src = `img/${smallest}.jpg`
+    image.src = `img/${smallest[0]}.jpg`
 })

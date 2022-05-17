@@ -8,7 +8,7 @@ def download_image(url, file_path, file_name):
     full_path = file_path + file_name
     urllib.request.urlretrieve(url, full_path)
 
-for i in range(1, 711):
+for i in range(0, 711):
     url = (f"https://pointerpointer.com/images/{i}.jpg")
     print(url)
     filename = f"{i}.jpg"
